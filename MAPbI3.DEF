@@ -1,0 +1,507 @@
+*================================================================================
+* SCAPS 1D 3.3.09 COMPLETE SIMULATION FILE FOR MAPbI3 PEROVSKITE SOLAR CELL
+*================================================================================
+* File Name: MAPbI3.DEF
+* Created: 2026-09-14
+* Description: Complete SCAPS 1D configuration for MAPbI3 perovskite solar cells
+* Device Structure: FTO/TiO2/MAPbI3/Spiro-OMeTAD/Au
+*================================================================================
+
+*================================================================================
+* 1. GENERAL SIMULATION PARAMETERS
+*================================================================================
+Version=3.3.09
+SimulationType=SteadyState
+Temperature=300
+TemperatureUnit=Kelvin
+
+*Numerical Parameters
+MaxIterations=1000
+ConvergenceTolerance=1e-8
+DampingFactor=0.5
+
+*================================================================================
+* 2. OPTICAL PARAMETERS
+*================================================================================
+WavelengthMin=300
+WavelengthMax=1200
+WavelengthStep=10
+OpticalModel=Coherent
+ReflectionMode=Specular
+
+*================================================================================
+* 3. SPATIAL DISCRETIZATION (MESH)
+*================================================================================
+MeshType=Exponential
+MeshExpansionFactor=1.1
+TotalMeshPoints=150
+MinimumMeshSpacing=1e-9
+
+*================================================================================
+* 4. LAYER STRUCTURE AND MATERIALS DEFINITION
+*================================================================================
+
+*================================================================================
+* LAYER 1: FRONT CONTACT - FTO (Fluorine-doped Tin Oxide)
+*================================================================================
+Layer_1_Name=FTO
+Layer_1_Type=MetalContact
+Layer_1_Thickness_nm=500
+Layer_1_Material=FTO
+
+*Optical Properties
+Layer_1_Bandgap_eV=3.5
+Layer_1_ElectronAffinity_eV=4.0
+Layer_1_Refractive_Index=1.95
+Layer_1_Extinction_Coefficient=0.001
+
+*Electrical Properties
+Layer_1_EffectiveDensityConduction_cm3=2.2e18
+Layer_1_EffectiveDensityValence_cm3=1.8e18
+Layer_1_ElectronMobility_cm2Vs=20
+Layer_1_HoleMobility_cm2Vs=2
+Layer_1_ElectronLifetime_s=1e-8
+Layer_1_HoleLifetime_s=1e-8
+
+*Defect Properties
+Layer_1_DefectType=Neutral
+Layer_1_DefectDensity_cm3=1e12
+Layer_1_DefectEnergy_eV=0.5
+
+*Doping Properties
+Layer_1_DopingType=n-type
+Layer_1_DopingDensity_cm3=1e20
+
+*Interface Properties
+Layer_1_SurfaceRecombinationVelocity_cm_s=1e3
+
+*================================================================================
+* LAYER 2: ELECTRON TRANSPORT LAYER - TiO2 (Titanium Dioxide)
+*================================================================================
+Layer_2_Name=TiO2
+Layer_2_Type=n-type
+Layer_2_Thickness_nm=100
+Layer_2_Material=TiO2
+
+*Optical Properties
+Layer_2_Bandgap_eV=3.2
+Layer_2_ElectronAffinity_eV=4.2
+Layer_2_Refractive_Index=2.5
+Layer_2_Extinction_Coefficient=0.0001
+
+*Electrical Properties
+Layer_2_EffectiveDensityConduction_cm3=1.0e20
+Layer_2_EffectiveDensityValence_cm3=1.0e20
+Layer_2_ElectronMobility_cm2Vs=100
+Layer_2_HoleMobility_cm2Vs=10
+Layer_2_ElectronLifetime_s=1e-7
+Layer_2_HoleLifetime_s=1e-7
+Layer_2_ElectricPermittivity=80
+
+*Defect Properties
+Layer_2_DefectType=Neutral
+Layer_2_DefectDensity_cm3=1e14
+Layer_2_DefectEnergy_eV=1.6
+
+*Doping Properties
+Layer_2_DopingType=n-type
+Layer_2_DopingDensity_cm3=1e18
+Layer_2_CompensationDensity_cm3=1e16
+
+*Interface Properties
+Layer_2_SurfaceRecombinationVelocity_cm_s=1e4
+
+*================================================================================
+* LAYER 3: PEROVSKITE ABSORBER - MAPbI3 (Methylammonium Lead Iodide)
+*================================================================================
+Layer_3_Name=MAPbI3
+Layer_3_Type=p-type
+Layer_3_Thickness_nm=500
+Layer_3_Material=MAPbI3
+
+*Optical Properties
+Layer_3_Bandgap_eV=1.55
+Layer_3_ElectronAffinity_eV=3.93
+Layer_3_Refractive_Index=2.5
+Layer_3_Extinction_Coefficient=0.1
+
+*Electrical Properties
+Layer_3_EffectiveDensityConduction_cm3=2.2e18
+Layer_3_EffectiveDensityValence_cm3=1.8e18
+Layer_3_ElectronMobility_cm2Vs=66
+Layer_3_HoleMobility_cm2Vs=371
+Layer_3_ElectronLifetime_s=1e-7
+Layer_3_HoleLifetime_s=1e-7
+Layer_3_ElectricPermittivity=30
+
+*Defect Properties
+Layer_3_DefectType=Acceptor
+Layer_3_DefectDensity_cm3=1e16
+Layer_3_DefectEnergy_eV=0.78
+Layer_3_TrapCrossSectionElectron_cm2=1e-15
+Layer_3_TrapCrossSectionHole_cm2=1e-14
+
+*Doping Properties
+Layer_3_DopingType=p-type
+Layer_3_DopingDensity_cm3=1e15
+Layer_3_CompensationDensity_cm3=1e14
+
+*Interface Properties
+Layer_3_SurfaceRecombinationVelocity_cm_s=1e3
+
+*Ion Migration Parameters
+Layer_3_IonMobility_cm2Vs=1e-9
+Layer_3_IonDensity_cm3=1e19
+Layer_3_IonChargeState=+1
+
+*================================================================================
+* LAYER 4: HOLE TRANSPORT LAYER - Spiro-OMeTAD (2,2',7,7'-tetrakis)
+*================================================================================
+Layer_4_Name=Spiro-OMeTAD
+Layer_4_Type=p-type
+Layer_4_Thickness_nm=150
+Layer_4_Material=Spiro-OMeTAD
+
+*Optical Properties
+Layer_4_Bandgap_eV=3.0
+Layer_4_ElectronAffinity_eV=2.0
+Layer_4_Refractive_Index=1.7
+Layer_4_Extinction_Coefficient=0.01
+
+*Electrical Properties
+Layer_4_EffectiveDensityConduction_cm3=1.0e20
+Layer_4_EffectiveDensityValence_cm3=1.0e20
+Layer_4_ElectronMobility_cm2Vs=1e-4
+Layer_4_HoleMobility_cm2Vs=1e-3
+Layer_4_ElectronLifetime_s=1e-8
+Layer_4_HoleLifetime_s=1e-8
+Layer_4_ElectricPermittivity=3.0
+
+*Defect Properties
+Layer_4_DefectType=Neutral
+Layer_4_DefectDensity_cm3=1e14
+Layer_4_DefectEnergy_eV=1.5
+
+*Doping Properties
+Layer_4_DopingType=p-type
+Layer_4_DopingDensity_cm3=1e18
+Layer_4_CompensationDensity_cm3=1e16
+
+*Interface Properties
+Layer_4_SurfaceRecombinationVelocity_cm_s=1e4
+
+*================================================================================
+* LAYER 5: BACK CONTACT - Au (Gold)
+*================================================================================
+Layer_5_Name=Au
+Layer_5_Type=MetalContact
+Layer_5_Thickness_nm=100
+Layer_5_Material=Au
+
+*Optical Properties
+Layer_5_Bandgap_eV=4.5
+Layer_5_ElectronAffinity_eV=5.1
+Layer_5_Refractive_Index=0.18
+Layer_5_Extinction_Coefficient=2.35
+
+*Electrical Properties
+Layer_5_EffectiveDensityConduction_cm3=2.2e18
+Layer_5_EffectiveDensityValence_cm3=1.8e18
+Layer_5_ElectronMobility_cm2Vs=20
+Layer_5_HoleMobility_cm2Vs=2
+Layer_5_ElectronLifetime_s=1e-8
+Layer_5_HoleLifetime_s=1e-8
+
+*Defect Properties
+Layer_5_DefectType=Neutral
+Layer_5_DefectDensity_cm3=1e10
+Layer_5_DefectEnergy_eV=2.3
+
+*Interface Properties
+Layer_5_SurfaceRecombinationVelocity_cm_s=1e4
+
+*================================================================================
+* 5. INTERFACE PARAMETERS
+*================================================================================
+
+*================================================================================
+* INTERFACE 1: FTO/TiO2
+*================================================================================
+Interface_1_Name=FTO_TiO2
+Interface_1_Type=Heterojunction
+
+*Defect Properties
+Interface_1_DefectType=Neutral
+Interface_1_DefectDensity_cm2=1e11
+Interface_1_DefectEnergy_eV=1.6
+Interface_1_CauseChargeLoss=Yes
+
+*Recombination Velocity
+Interface_1_RecombinationVelocity_cm_s=1e4
+
+*Charge Tunneling
+Interface_1_TunnelingCoefficient=0.1
+
+*================================================================================
+* INTERFACE 2: TiO2/MAPbI3
+*================================================================================
+Interface_2_Name=TiO2_MAPbI3
+Interface_2_Type=Heterojunction
+
+*Defect Properties
+Interface_2_DefectType=Acceptor
+Interface_2_DefectDensity_cm2=1e10
+Interface_2_DefectEnergy_eV=0.75
+Interface_2_CauseChargeLoss=Yes
+
+*Recombination Velocity
+Interface_2_RecombinationVelocity_cm_s=1e5
+
+*Band Alignment
+Interface_2_ConductionBandOffset_eV=0.27
+Interface_2_ValenceBandOffset_eV=0.27
+
+*================================================================================
+* INTERFACE 3: MAPbI3/Spiro-OMeTAD
+*================================================================================
+Interface_3_Name=MAPbI3_Spiro
+Interface_3_Type=Heterojunction
+
+*Defect Properties
+Interface_3_DefectType=Donor
+Interface_3_DefectDensity_cm2=1e10
+Interface_3_DefectEnergy_eV=1.93
+Interface_3_CauseChargeLoss=Yes
+
+*Recombination Velocity
+Interface_3_RecombinationVelocity_cm_s=1e5
+
+*Band Alignment
+Interface_3_ConductionBandOffset_eV=1.93
+Interface_3_ValenceBandOffset_eV=0.38
+
+*================================================================================
+* INTERFACE 4: Spiro-OMeTAD/Au
+*================================================================================
+Interface_4_Name=Spiro_Au
+Interface_4_Type=Schottky
+
+*Defect Properties
+Interface_4_DefectType=Neutral
+Interface_4_DefectDensity_cm2=1e11
+Interface_4_DefectEnergy_eV=1.5
+Interface_4_CauseChargeLoss=Yes
+
+*Recombination Velocity
+Interface_4_RecombinationVelocity_cm_s=1e4
+
+*Schottky Barrier
+Interface_4_SchottkyBarrier_eV=0.1
+
+*================================================================================
+* 6. CONTACT PROPERTIES
+*================================================================================
+
+*Front Contact (FTO)
+FrontContact_Name=FTO_Contact
+FrontContact_Type=Ohmic
+FrontContact_WorkFunction_eV=4.4
+FrontContact_Resistance_Ohm_cm2=1e-4
+FrontContact_SeriesResistance_Ohm=0.1
+
+*Back Contact (Au)
+BackContact_Name=Au_Contact
+BackContact_Type=Ohmic
+BackContact_WorkFunction_eV=5.1
+BackContact_Resistance_Ohm_cm2=1e-5
+BackContact_SeriesResistance_Ohm=0.01
+
+*================================================================================
+* 7. ILLUMINATION AND SPECTRUM PARAMETERS
+*================================================================================
+
+*Light Source Definition
+LightSource_Type=AM1.5G
+LightSource_Intensity_Sun=1.0
+LightSource_Wavelength_Min_nm=300
+LightSource_Wavelength_Max_nm=1200
+
+*Optical Parameters
+OpticalReflection_Front=0.08
+OpticalTransmission_Back=0.05
+OpticalTransmission_Active_Layer=0.95
+OpticalAbsorption_MAPbI3=0.92
+
+*Solar Cell Efficiency Parameters
+ShortCircuitCurrent_mA_cm2=22.5
+OpenCircuitVoltage_V=1.15
+FillFactor=0.78
+Efficiency_Percent=20.2
+
+*================================================================================
+* 8. VOLTAGE AND CURRENT SIMULATION PARAMETERS
+*================================================================================
+
+*DC Voltage Sweep
+VoltageMin_V=-0.5
+VoltageMax_V=1.2
+VoltageStep_V=0.01
+NumberOfVoltagePoints=171
+
+*Current Conditions
+DarkCurrent_mA_cm2=1e-8
+PhotocurrentDensity_mA_cm2=22.5
+
+*Bias Point
+BiasVoltage_V=0.0
+
+*================================================================================
+* 9. AC (FREQUENCY) SIMULATION PARAMETERS
+*================================================================================
+
+*Frequency Range
+FrequencyMin_Hz=1e1
+FrequencyMax_Hz=1e6
+FrequencyStep=Logarithmic
+FrequencyPointsPerDecade=10
+
+*AC Magnitude
+ACVoltageAmplitude_mV=10
+
+*Capacitance Calculation
+CalculateMottSchottky=Yes
+CalculateCapacitance=Yes
+CalculateAdmittance=Yes
+
+*================================================================================
+* 10. PHYSICAL CONSTANTS AND PARAMETERS
+*================================================================================
+
+*Fundamental Constants
+Boltzmann_Constant=1.38e-23
+ElementaryCharge=1.602e-19
+Permittivity_Vacuum=8.854e-12
+Planck_Constant=6.626e-34
+
+*Physical Parameters
+Device_Area_cm2=0.1
+SeriesResistance_Ohm=5
+ShuntResistance_Ohm=1e6
+ParallelCapacitance_F=1e-10
+
+*================================================================================
+* 11. SIMULATION OUTPUT SETTINGS
+*================================================================================
+
+*Enable/Disable Outputs
+Output_CurrentVoltage=Yes
+Output_CapacitanceVoltage=Yes
+Output_AdmittanceFrequency=Yes
+Output_ElectricField=Yes
+Output_CarrierConcentration=Yes
+Output_Recombination=Yes
+Output_BandDiagram=Yes
+Output_Quantum_Efficiency=Yes
+Output_Reflectance=Yes
+Output_Transmittance=Yes
+
+*Data Format
+OutputFormat=ASCII
+OutputPrecision=6
+OutputFileName=MAPbI3_Results
+
+*Plotting Options
+PlotType=LinearLinear
+PlotRange_Auto=Yes
+
+*================================================================================
+* 12. NUMERICAL SOLVER SETTINGS
+*================================================================================
+
+*Linear Solver
+LinearSolver=BiCGSTAB
+PreconditionerType=ILU
+LinearSolverTolerance=1e-10
+
+*Non-Linear Solver
+NonLinearSolver=NewtonRaphson
+MaxNewtonIterations=100
+NewtonDampingFactor=0.5
+ConvergenceCriteria=Current
+
+*Time Integration (for transient analysis)
+TimeIntegrationMethod=BDF
+MaxTimeStep_s=1e-10
+MinTimeStep_s=1e-14
+
+*================================================================================
+* 13. MATERIAL PARAMETERS (REFERENCE)
+*================================================================================
+
+*MAPbI3 Properties
+MAPbI3_Bandgap_300K=1.55
+MAPbI3_TemperatureCoefficient=-0.0012
+MAPbI3_Effective_Mass_Electron=0.22
+MAPbI3_Effective_Mass_Hole=0.29
+MAPbI3_Exciton_Binding_Energy_meV=16
+MAPbI3_Direct_Indirect_Transition=Direct
+
+*Thermal Properties
+ThermalConductivity_W_mK=0.5
+SpecificHeat_J_kgK=1200
+ThermalExpansionCoefficient_K_inv=5e-5
+
+*================================================================================
+* 14. ADVANCED SIMULATION OPTIONS
+*================================================================================
+
+*Quantum Effects
+IncludeQuantumConfinement=No
+IncludeTunneling=Yes
+TunnelingModel=FowlerNordheim
+
+*Ionic Motion
+IncludeIonMigration=Yes
+IonMigrationModel=PointDefect
+
+*Hysteresis
+IncludeHysteresis=Yes
+HysteresisModel=IonAccumulation
+
+*Temperature Effects
+IncludeTemperatureVar=No
+TemperatureProfile=Constant
+
+*Light-Induced Degradation
+IncludeDegradation=No
+DegradationRate_per_hour=0.01
+
+*================================================================================
+* 15. VALIDATION AND TESTING PARAMETERS
+*================================================================================
+
+*Known Device Characteristics
+Reference_Voc_V=1.15
+Reference_Jsc_mA_cm2=22.5
+Reference_FF=0.78
+Reference_PCE=20.2
+
+*Acceptable Tolerance
+Tolerance_Voltage=0.05
+Tolerance_Current=1.0
+Tolerance_Efficiency=2.0
+
+*================================================================================
+* END OF SCAPS 1D 3.3.09 CONFIGURATION FILE
+*================================================================================
+* This file contains a complete simulation setup for a MAPbI3 perovskite
+* solar cell with standard architecture: FTO/TiO2/MAPbI3/Spiro-OMeTAD/Au
+* 
+* Notes for users:
+* - Adjust layer thicknesses based on experimental conditions
+* - Fine-tune defect densities and mobilities for specific fabrication methods
+* - Modify doping densities to match your material quality
+* - Update interface defect parameters based on passivation treatments
+* - Temperature can be varied for thermal analysis
+* - Enable hysteresis calculations for ion migration studies
+*================================================================================
