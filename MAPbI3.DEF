@@ -1,212 +1,293 @@
-*================================================================================
-* SCAPS 1D 3.3.09 SIMULATION FILE FOR MAPbI3 PEROVSKITE SOLAR CELL
-*================================================================================
-* Based on Scientific Literature:
-* Title: Enhanced Conversion Efficiency in MAPbI3 Perovskite Solar Cells 
-*        through Parameters Optimization via SCAPS-1D Simulation
-* Authors: Chaerin Son, Hyojung Son, Byoung-Seong Jeong
-* Journal: Applied Sciences, 2024, Volume 14, Issue 6, Article 2390
-* DOI: 10.3390/app14062390
-* URL: https://doi.org/10.3390/app14062390
-*
-* Reference Publication Details:
-* - Device structure: ITO/TiO2/MAPbI3/Cu2O/Au
-* - Simulation tool: SCAPS-1D version 3.3.09
-* - Operating temperature: 300 K
-* - Light source: AM1.5G (1000 W/m²)
-*================================================================================
+* SCAPS 3.3.09 input file
+* Numerical Design and Optimization of MAPbI3-based perovskite solar cell
+* Device stack: Au (back) / Spiro-OMeTAD / MAPbI3 / TiO2 / FTO / front contact
+* Save as MAPbI3_SCAPS.def
 
-*================================================================================
-* SIMULATION GENERAL SETTINGS
-*================================================================================
-Version=3.3.09
-Temperature=300
-Mode=Steady state
+convergence
 
-*Mesh parameters
-xmesh_exp=1.1
+recalculate mesh : 0 (0: fixed mesh, 1: adaptive mesh)
 
-*================================================================================
-* LAYER 1: FRONT CONTACT - ITO (Indium Tin Oxide)
-*================================================================================
-Layer=1
-Layer1_name=ITO
-Layer1_Vbi=0
-Layer1_d=150
-Layer1_Nc=1e20
-Layer1_Nv=1e20
-Layer1_mu_e=20
-Layer1_mu_h=5
-Layer1_tau_e=1e-8
-Layer1_tau_h=1e-8
-Layer1_W_l=0
-Layer1_W_r=0
-Layer1_type=Metal
-Layer1_sn=1e7
-Layer1_sp=1e7
-Layer1_rel_perm=9
-Layer1_defect_type=Neutral
-Layer1_defect_density=1e14
-Layer1_defect_energy=Ec-0.5
 
-*================================================================================
-* LAYER 2: ELECTRON TRANSPORT LAYER - TiO2 (Titanium Dioxide)
-*================================================================================
-Layer=2
-Layer2_name=TiO2
-Layer2_Vbi=0.9
-Layer2_d=100
-Layer2_Nc=1e20
-Layer2_Nv=1e20
-Layer2_mu_e=20
-Layer2_mu_h=10
-Layer2_tau_e=1e-7
-Layer2_tau_h=1e-7
-Layer2_W_l=0
-Layer2_W_r=0
-Layer2_type=Semiconductor
-Layer2_sn=1e7
-Layer2_sp=1e7
-Layer2_rel_perm=80
-Layer2_defect_type=Neutral
-Layer2_defect_density=1e14
-Layer2_defect_energy=Ec-1.6
-Layer2_Add_Nc=0
-Layer2_Add_Nv=0
-Layer2_Add_doping_type=n
-Layer2_Add_N_doping=1e18
-Layer2_composition=TiO2
+back contact
 
-*================================================================================
-* LAYER 3: PEROVSKITE ABSORBER - MAPbI3 (Methylammonium Lead Iodide)
-*================================================================================
-Layer=3
-Layer3_name=MAPbI3
-Layer3_Vbi=1.2
-Layer3_d=500
-Layer3_Nc=2.2e18
-Layer3_Nv=1.8e18
-Layer3_mu_e=66
-Layer3_mu_h=371
-Layer3_tau_e=1e-7
-Layer3_tau_h=1e-7
-Layer3_W_l=0
-Layer3_W_r=0
-Layer3_type=Semiconductor
-Layer3_sn=1e5
-Layer3_sp=1e5
-Layer3_rel_perm=30
-Layer3_defect_type=Acceptor
-Layer3_defect_density=1e16
-Layer3_defect_energy=Ev+0.78
-Layer3_Add_Nc=0
-Layer3_Add_Nv=0
-Layer3_Add_doping_type=p
-Layer3_Add_N_doping=1e15
-Layer3_composition=MAPbI3
-Layer3_bandgap=1.55
-Layer3_e_affinity=3.93
+flatband : 1
+recalculate : 1
+Sn : 1.000e+07 [m/s]
+Sp : 1.000e+07 [m/s]
+Tunneling to contact: 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
 
-*================================================================================
-* LAYER 4: HOLE TRANSPORT LAYER - Cu2O (Cuprous Oxide)
-*================================================================================
-Layer=4
-Layer4_name=Cu2O
-Layer4_Vbi=0.5
-Layer4_d=100
-Layer4_Nc=1e20
-Layer4_Nv=1e20
-Layer4_mu_e=1e-4
-Layer4_mu_h=50
-Layer4_tau_e=1e-8
-Layer4_tau_h=1e-8
-Layer4_W_l=0
-Layer4_W_r=0
-Layer4_type=Semiconductor
-Layer4_sn=1e7
-Layer4_sp=1e7
-Layer4_rel_perm=10
-Layer4_defect_type=Neutral
-Layer4_defect_density=1e14
-Layer4_defect_energy=Ev+1.5
-Layer4_Add_Nc=0
-Layer4_Add_Nv=0
-Layer4_Add_doping_type=p
-Layer4_Add_N_doping=1e18
-Layer4_composition=Cu2O
 
-*================================================================================
-* LAYER 5: BACK CONTACT - Au (Gold)
-*================================================================================
-Layer=5
-Layer5_name=Au
-Layer5_Vbi=0
-Layer5_d=100
-Layer5_Nc=1e20
-Layer5_Nv=1e20
-Layer5_mu_e=20
-Layer5_mu_h=5
-Layer5_tau_e=1e-8
-Layer5_tau_h=1e-8
-Layer5_W_l=0
-Layer5_W_r=0
-Layer5_type=Metal
-Layer5_sn=1e7
-Layer5_sp=1e7
-Layer5_rel_perm=1
-Layer5_defect_type=Neutral
-Layer5_defect_density=1e10
+layer
 
-*================================================================================
-* INTERFACE PARAMETERS (From Scientific References)
-*================================================================================
+name : Spiro-OMeTAD
+d : 1.500e-07 [m]
+composition grading : 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0 1 [-]
+v_th_n : 1.000e+05 1.000e+05 1.000e+05 1.000000e+00 1.000000e+00 1.000e+05 1.000e+05 0 0 [m/s]
+v_th_p : 1.000e+05 1.000e+05 1.000e+05 1.000000e+00 1.000000e+00 1.000e+05 1.000e+05 0 0 [m/s]
+eps : 3.000000 3.000000 3.000000 1.000000 1.000000 3.000000 3.000000 0 0 [-]
+chi : 2.000000 2.000000 2.000000 1.000000 1.000000 2.000000 2.000000 0 0 [eV]
+Eg : 3.000000 3.000000 3.000000 1.000000 1.000000 3.000000 3.000000 0 0 [eV]
+Nc : 1.000000e+20 1.000000e+20 1.000000e+20 1.000000e+00 1.000000e+00 1.000000e+20 1.000000e+20 0 0 [/m^3]
+Nv : 1.000000e+20 1.000000e+20 1.000000e+20 1.000000e+00 1.000000e+00 1.000000e+20 1.000000e+20 0 0 [/m^3]
+mu_n : 1.000000e-04 1.000000e-04 1.000000e-04 1.000000e+00 1.000000e+00 1.000000e-04 1.000000e-04 0 0 [m^2/Vs]
+mu_p : 1.000000e-03 1.000000e-03 1.000000e-03 1.000000e+00 1.000000e+00 1.000000e-03 1.000000e-03 0 0 [m^2/Vs]
+Tunneling in layer: 0
+Relative electron mass : 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 0 0 [-]
+Relative hole mass : 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 0 0 [-]
+K_rad : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^3/s]
+c_n_auger : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^6/s]
+c_p_auger : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^6/s]
+Na(y) : 1.000000e+18 1.000000e+18 1.000000e+18 1.000000e+00 1.000000e+00 1.000000e+18 1.000000e+18 0 0 [/m^3]
+Nd(y) : 0.000000e+00 0.000000e+00 0.000000e+00 1.000000e+00 1.000000e+00 0.000000e+00 0.000000e+00 0 0 [/m^3]
+absorption grading : 800.00 800.00 250.00 250.00 0.00 1.20 1.20 0 0 [nm]
+absorptionmodel pure A material (y=0) : coefficients A and B
+A : 1.000e+06 [/(m*sqrt(eV))]
+B : 0.000e+00 [sqrt(eV)/m]
+pure B material (y=1), A : 1.000e+06 [/(m*sqrt(eV))]
+pure B material (y=1), B : 0.000e+00 [sqrt(eV)/m]
 
-*Interface 1: ITO/TiO2
-Interface1_type=Donor
-Interface1_N_interface_donor=1e11
-Interface1_interface_energy_level=Ec-1.6
+srhrecombination
 
-*Interface 2: TiO2/MAPbI3
-Interface2_type=Acceptor
-Interface2_N_interface_donor=1e10
-Interface2_interface_energy_level=Ev+0.78
+type : neutral ( 1 level(s) )
+energy distribution : single
+Reference for defect energy : 0
+Ekar : 0.1000 [eV]
+Nt(x) : 1.000000e+14 1.000000e+14 1.000000e+14 1.000000e+00 1.000000e+00 1.000000e+14 1.000000e+14 0 1 [/m^3]
+profile : homogenous
+Lkar : 1.000e+00 [m]
+Nleft : 1.000000e+14 [/m^3]
+Nright : 1.000000e+14 [/m^3]
+leveltype : neutral
+sigma_n : 1.000e-19 [m^2]
+sigma_p : 1.000e-19 [m^2]
+Et : 1.500 [eV]
 
-*Interface 3: MAPbI3/Cu2O
-Interface3_type=Donor
-Interface3_N_interface_donor=1e10
-Interface3_interface_energy_level=Ev+1.93
+interface properties
 
-*Interface 4: Cu2O/Au
-Interface4_type=Neutral
-Interface4_N_interface_donor=1e11
+interfacename : Spiro-OMeTAD / MAPbI3
+Intraband tunneling : 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
 
-*================================================================================
-* CONTACT PROPERTIES
-*================================================================================
-*Front contact work function
-Phi_cont_l=4.4
+interface recombination
 
-*Back contact work function
-Phi_cont_r=5.1
+type : neutral
+sigma_nleft : 1.000e-18 [m^2]
+sigma_nright : 1.000e-18 [m^2]
+sigma_pleft : 1.000e-18 [m^2]
+sigma_pright : 1.000e-18 [m^2]
+Tunneling to trap: 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
+energy distribution : uniform
+Reference for defect energy : 7
+Et : 0.775 [eV]
+Ekar : 0.10 [eV]
+N : 1.000e+09 [/m^2.eV]
 
-*================================================================================
-* ILLUMINATION
-*================================================================================
-*Standard AM1.5G solar spectrum at 25°C
-F_light=1
-light=AM1.5G
 
-*================================================================================
-* VOLTAGE SWEEP SETTINGS
-*================================================================================
-Vstart=-0.5
-Vstep=0.01
-Vstop=1.2
+layer
 
-*================================================================================
-* END OF FILE
-* Scientific Reference:
-* Son, C.; Son, H.; Jeong, B.-S. Enhanced Conversion Efficiency in MAPbI3 
-* Perovskite Solar Cells through Parameters Optimization via SCAPS-1D Simulation. 
-* Appl. Sci. 2024, 14, 2390. https://doi.org/10.3390/app14062390
-*================================================================================
+name : MAPbI3
+d : 5.000e-07 [m]
+composition grading : 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0 1 [-]
+v_th_n : 1.000e+05 1.000e+05 1.000e+05 1.000000e+00 1.000000e+00 1.000e+05 1.000e+05 0 0 [m/s]
+v_th_p : 1.000e+05 1.000e+05 1.000e+05 1.000000e+00 1.000000e+00 1.000e+05 1.000e+05 0 0 [m/s]
+eps : 3.000000 3.000000 3.000000 1.000000 1.000000 3.000000 3.000000 0 0 [-]
+chi : 3.930000 3.930000 3.930000 1.000000 1.000000 3.930000 3.930000 0 0 [eV]
+Eg : 1.550000 1.550000 1.550000 1.000000 1.000000 1.550000 1.550000 0 0 [eV]
+Nc : 2.200000e+18 2.200000e+18 2.200000e+18 1.000000e+00 1.000000e+00 2.200000e+18 2.200000e+18 0 0 [/m^3]
+Nv : 1.800000e+18 1.800000e+18 1.800000e+18 1.000000e+00 1.000000e+00 1.800000e+18 1.800000e+18 0 0 [/m^3]
+mu_n : 6.600000e-02 6.600000e-02 6.600000e-02 1.000000e+00 1.000000e+00 6.600000e-02 6.600000e-02 0 0 [m^2/Vs]
+mu_p : 3.710000e-01 3.710000e-01 3.710000e-01 1.000000e+00 1.000000e+00 3.710000e-01 3.710000e-01 0 0 [m^2/Vs]
+Tunneling in layer: 0
+Relative electron mass : 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 0 0 [-]
+Relative hole mass : 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 0 0 [-]
+K_rad : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^3/s]
+c_n_auger : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^6/s]
+c_p_auger : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^6/s]
+Na(y) : 1.000000e+15 1.000000e+15 1.000000e+15 1.000000e+00 1.000000e+00 1.000000e+15 1.000000e+15 0 0 [/m^3]
+Nd(y) : 0.000000e+00 0.000000e+00 0.000000e+00 1.000000e+00 1.000000e+00 0.000000e+00 0.000000e+00 0 0 [/m^3]
+absorption grading : 800.00 800.00 250.00 250.00 0.00 1.20 1.20 0 0 [nm]
+absorptionmodel pure A material (y=0) : coefficients A and B
+A : 1.200e+07 [/(m*sqrt(eV))]
+B : 0.000e+00 [sqrt(eV)/m]
+
+srhrecombination
+
+type : acceptor ( 1 level(s) )
+energy distribution : single
+Reference for defect energy : 0
+Ekar : 0.1000 [eV]
+Nt(x) : 1.000000e+16 1.000000e+16 1.000000e+16 1.000000e+00 1.000000e+00 1.000000e+16 1.000000e+16 0 1 [/m^3]
+profile : homogenous
+Lkar : 1.000e+00 [m]
+Nleft : 1.000000e+16 [/m^3]
+Nright : 1.000000e+16 [/m^3]
+leveltype : neutral
+sigma_n : 1.000e-15 [m^2]
+sigma_p : 1.000e-15 [m^2]
+Et : 0.775 [eV]
+
+interface properties
+
+interfacename : MAPbI3 / TiO2
+Intraband tunneling : 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
+
+interface recombination
+
+type : neutral
+sigma_nleft : 1.000e-19 [m^2]
+sigma_nright : 1.000e-19 [m^2]
+sigma_pleft : 1.000e-19 [m^2]
+sigma_pright : 1.000e-19 [m^2]
+Tunneling to trap: 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
+energy distribution : single
+Reference for defect energy : 7
+Et : 0.775 [eV]
+Ekar : 0.10 [eV]
+N : 1.000e+09 [/m^2]
+
+
+layer
+
+name : TiO2
+d : 1.000e-07 [m]
+composition grading : 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0 1 [-]
+v_th_n : 1.000e+05 1.000e+05 1.000e+05 1.000000e+00 1.000000e+00 1.000e+05 1.000e+05 0 0 [m/s]
+v_th_p : 1.000e+05 1.000e+05 1.000e+05 1.000000e+00 1.000000e+00 1.000e+05 1.000e+05 0 0 [m/s]
+eps : 8.000000 8.000000 8.000000 1.000000 1.000000 8.000000 8.000000 0 0 [-]
+chi : 4.200000 4.200000 4.200000 1.000000 1.000000 4.200000 4.200000 0 0 [eV]
+Eg : 3.200000 3.200000 3.200000 1.000000 1.000000 3.200000 3.200000 0 0 [eV]
+Nc : 1.000000e+20 1.000000e+20 1.000000e+20 1.000000e+00 1.000000e+00 1.000000e+20 1.000000e+20 0 0 [/m^3]
+Nv : 1.000000e+20 1.000000e+20 1.000000e+20 1.000000e+00 1.000000e+00 1.000000e+20 1.000000e+20 0 0 [/m^3]
+mu_n : 1.000000e-02 1.000000e-02 1.000000e-02 1.000000e+00 1.000000e+00 1.000000e-02 1.000000e-02 0 0 [m^2/Vs]
+mu_p : 1.000000e-03 1.000000e-03 1.000000e-03 1.000000e+00 1.000000e+00 1.000000e-03 1.000000e-03 0 0 [m^2/Vs]
+Tunneling in layer: 0
+Relative electron mass : 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 0 0 [-]
+Relative hole mass : 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 0 0 [-]
+K_rad : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^3/s]
+c_n_auger : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^6/s]
+c_p_auger : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^6/s]
+Na(y) : 0.000000e+00 0.000000e+00 0.000000e+00 1.000000e+00 1.000000e+00 0.000000e+00 0.000000e+00 0 0 [/m^3]
+Nd(y) : 1.000000e+18 1.000000e+18 1.000000e+18 1.000000e+00 1.000000e+00 1.000000e+18 1.000000e+18 0 0 [/m^3]
+absorption grading : 375.75 375.75 250.00 250.00 0.00 1.20 1.20 0 0 [nm]
+absorptionmodel pure A material (y=0) : coefficients A and B
+A : 5.477e+06 [/(m*sqrt(eV))]
+B : 0.000e+00 [sqrt(eV)/m]
+
+srhrecombination
+
+type : neutral ( 1 level(s) )
+energy distribution : single
+Reference for defect energy : 0
+Ekar : 0.1000 [eV]
+Nt(x) : 1.000000e+14 1.000000e+14 1.000000e+14 1.000000e+00 1.000000e+00 1.000000e+14 1.000000e+14 0 1 [/m^3]
+profile : homogenous
+Lkar : 1.000e+00 [m]
+Nleft : 1.000000e+14 [/m^3]
+Nright : 1.000000e+14 [/m^3]
+leveltype : neutral
+sigma_n : 1.000e-19 [m^2]
+sigma_p : 1.000e-19 [m^2]
+Et : 1.650 [eV]
+
+interface properties
+
+interfacename : TiO2 / FTO
+Intraband tunneling : 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
+
+interface recombination
+
+type : neutral
+sigma_nleft : 1.000e-19 [m^2]
+sigma_nright : 1.000e-19 [m^2]
+sigma_pleft : 1.000e-19 [m^2]
+sigma_pright : 1.000e-19 [m^2]
+Tunneling to trap: 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
+energy distribution : single
+Reference for defect energy : 7
+Et : 0.60 [eV]
+Ekar : 0.10 [eV]
+N : 1.000e+08 [/m^2]
+
+
+layer
+
+name : FTO
+d : 1.000e-07 [m]
+composition grading : 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0 1 [-]
+v_th_n : 1.000e+05 1.000e+05 1.000e+05 1.000000e+00 1.000000e+00 1.000e+05 1.000e+05 0 0 [m/s]
+v_th_p : 1.000e+05 1.000e+05 1.000e+05 1.000000e+00 1.000000e+00 1.000e+05 1.000e+05 0 0 [m/s]
+eps : 9.000000 9.000000 9.000000 1.000000 1.000000 9.000000 9.000000 0 0 [-]
+chi : 4.000000 4.000000 4.000000 1.000000 1.000000 4.000000 4.000000 0 0 [eV]
+Eg : 3.600000 3.600000 3.600000 1.000000 1.000000 3.600000 3.600000 0 0 [eV]
+Nc : 2.200000e+24 2.200000e+24 2.200000e+24 1.000000e+00 1.000000e+00 2.200000e+24 2.200000e+24 0 0 [/m^3]
+Nv : 1.800000e+25 1.800000e+25 1.800000e+25 1.000000e+00 1.000000e+00 1.800000e+25 1.800000e+25 0 0 [/m^3]
+mu_n : 2.500000e-03 2.500000e-03 2.500000e-03 1.000000e+00 1.000000e+00 2.500000e-03 2.500000e-03 0 0 [m^2/Vs]
+mu_p : 1.500000e-03 1.500000e-03 1.500000e-03 1.000000e+00 1.000000e+00 1.500000e-03 1.500000e-03 0 0 [m^2/Vs]
+Tunneling in layer: 0
+Relative electron mass : 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 0 0 [-]
+Relative hole mass : 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 1.000000e+00 0 0 [-]
+K_rad : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^3/s]
+c_n_auger : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^6/s]
+c_p_auger : 0.000000e+00 0.000000e+00 1.000000e+01 1.000000e+01 1.000000e+01 0.000000e+00 0.000000e+00 0 0 [m^6/s]
+Na(y) : 0.000000e+00 0.000000e+00 0.000000e+00 1.000000e+00 1.000000e+00 0.000000e+00 0.000000e+00 0 0 [/m^3]
+Nd(y) : 1.000000e+25 1.000000e+25 1.000000e+25 1.000000e+00 1.000000e+00 1.000000e+25 1.000000e+25 0 0 [/m^3]
+absorption grading : 344.43 344.43 250.00 250.00 0.00 1.20 1.20 0 0 [nm]
+absorptionmodel pure A material (y=0) : coefficients A and B
+A : 5.477e+06 [/(m*sqrt(eV))]
+B : 0.000e+00 [sqrt(eV)/m]
+
+srhrecombination
+
+type : donor ( 1 level(s) )
+energy distribution : single
+Reference for defect energy : 0
+Ekar : 0.1000 [eV]
+Nt(x) : 0.000e+00 0.000e+00 0.000e+00 1.000000e+00 1.000000e+00 0.000e+00 0.000e+00 0 1 [/m^3]
+profile : homogenous
+Lkar : 1.000e+00 [m]
+Nleft : 0.000e+00 [/m^3]
+Nright : 0.000e+00 [/m^3]
+leveltype : +/0
+sigma_n : 1.000e-19 [m^2]
+sigma_p : 1.000e-19 [m^2]
+Et : 1.800 [eV]
+
+interface properties
+
+interfacename : 
+Intraband tunneling : 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
+
+
+front contact
+
+flatband : 1
+recalculate : 1
+Sn : 1.000e+05 [m/s]
+Sp : 1.000e+03 [m/s]
+Tunneling to contact: 0
+Relative electron mass : 1.00e+00
+Relative hole mass : 1.00e+00
+
+
+working point
+
+illuminated from : right
+internal Rfront : 0.00000000
+internal Tfront : 1.0000e+00
+voltage V applied to : -1
+cell reference system : 1
